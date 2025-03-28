@@ -12,24 +12,26 @@ import { log } from 'console';
 })
 export class QuestionsComponent implements OnInit {
   private questionBankService = inject(QuestionbankService);
-  questions$ = this.questionBankService.getQuestions();
+  // questions$ = this.questionBankService.getQuestions();
+  public shuffledQuestions: { question: string; options: string[] }[] = [];
 
   ngOnInit() {
-    this.questions$ = this.questionBankService.getQuestions();
+    // this.questions$ = this.questionBankService.getQuestions();
+    this.shuffledQuestions = this.questionBankService.shuffledQuestionsAnswer();
   }
 
-  getOptions(id: number) {
-    const currQuestion = this.questions$().filter((x) => x.id === id);
-    let options = [
-      ...currQuestion[0].incorrectOptions,
-      currQuestion[0].correctAnswer,
-    ];
-    return this.questionBankService.shuffleArray(options);
-  }
+  // getOptions(id: number) {
+  //   const currQuestion = this.questions$().filter((x) => x.id === id);
+  //   let options = [
+  //     ...currQuestion[0].incorrectOptions,
+  //     currQuestion[0].correctAnswer,
+  //   ];
+  //   return this.questionBankService.shuffleArray(options);
+  // }
 
-  selectAnswer(id: number, selectAnswer: string) {
-    console.log('Selected answer:', selectAnswer);
-    console.log('For question id:', id);
-    // this.questionBankService.selectAnswer(id, selectAnswer);
-  }
+  // selectAnswer(id: number, selectAnswer: string) {
+  //   console.log('Selected answer:', selectAnswer);
+  //   console.log('For question id:', id);
+  //   // this.questionBankService.selectAnswer(id, selectAnswer);
+  // }
 }
