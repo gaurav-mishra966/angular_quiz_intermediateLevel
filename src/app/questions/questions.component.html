@@ -1,0 +1,15 @@
+<p>Questions Work!</p>
+
+<h2>Question Bank</h2>
+
+<div *ngFor="let quizquestion of questions$()">
+    <div>
+        <p><strong>{{ quizquestion.question }}</strong></p>
+        <div *ngFor="let option of getOptions(quizquestion.id)">
+            <button (click)="selectAnswer(quizquestion.id, option)">
+                {{ option }}
+            </button>
+        </div>
+        <!-- <button (click)="shuffleQuestionOptions(quizquestion.id)">Shuffle Options</button> -->
+    </div>
+</div>
