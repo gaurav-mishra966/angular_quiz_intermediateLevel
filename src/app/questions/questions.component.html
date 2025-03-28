@@ -2,7 +2,7 @@
 
 <h2>Question Bank</h2>
 
-<div *ngFor="let quizquestion of questions$()">
+<!-- <div *ngFor="let quizquestion of questions$()">
     <div>
         <p><strong>{{ quizquestion.question }}</strong></p>
         <div *ngFor="let option of getOptions(quizquestion.id)">
@@ -10,6 +10,21 @@
                 {{ option }}
             </button>
         </div>
-        <!-- <button (click)="shuffleQuestionOptions(quizquestion.id)">Shuffle Options</button> -->
+         <button (click)="shuffleQuestionOptions(quizquestion.id)">Shuffle Options</button> 
+    </div>
+</div> -->
+
+@for (question of shuffledQuestions; track $index) {
+<div>
+    <p><strong>{{ question.question }}</strong></p>
+    <div class="options" id="index">
+        @for (option of question.options; track $index) {
+        <!-- <button [class.primary]="true"> -->
+
+        <button #btn (click)="toggleActive()" [ngClass]="{'primary':true }">
+            {{ option }} &nbsp;
+        </button>
+        }
     </div>
 </div>
+}
