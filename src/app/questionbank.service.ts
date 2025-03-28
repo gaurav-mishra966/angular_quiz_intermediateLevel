@@ -1,7 +1,5 @@
-import { Injectable, signal, Signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Question } from './question'; // Ensure this import points to the correct file
-import { SIGNAL } from '@angular/core/primitives/signals';
-import { log } from 'console';
 
 @Injectable({
   providedIn: 'root',
